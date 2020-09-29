@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Catalog>
+<table>
+    <caption>Доска обьявлений</caption>
+
+    @foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))
+    {
+
+        <tr>
+            <th>@catalogGroup.Key</th>
+        </tr>
+        @foreach (string itemSubtitle in catalogGroup)
+        {
+            <tr>
+                <td>
+                    @itemSubtitle
+                </td>
+            </tr>
+        }
+    }
+</table>
