@@ -7,6 +7,12 @@ namespace Doska.Models
 {
     public class CatalogRepository : ICatalogRepository
     {
+
+
+        public CatalogRepository()
+        {
+
+        }
         public IEnumerable<Catalog> Catalogs => new List<Catalog> { 
             new Catalog { Title = "Работа и бизнес", Subtitle = "Вакансии" },
             new Catalog { Title = "Работа и бизнес", Subtitle = "Ищут работу" },
