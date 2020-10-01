@@ -2,19 +2,21 @@
 <table>
     <caption>Доска обьявлений</caption>
 
-    @foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))
-    {
+    @*@foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))*@
+        @foreach (Catalog catalog in Model)
 
-        <tr>
-            <th>@catalogGroup.Key</th>
-        </tr>
-        @foreach (string itemSubtitle in catalogGroup)
         {
+
             <tr>
-                <td>
-                    @itemSubtitle
-                </td>
+                <th>@catalog.Title</th>
             </tr>
+            @foreach (Subtitle subtitle in catalog.Subtitles)
+            {
+                <tr>
+                    <td>
+                        @subtitle.NameSubtitle
+                    </td>
+                </tr>
+            }
         }
-    }
 </table>

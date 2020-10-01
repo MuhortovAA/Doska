@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.Text;
 
 namespace Doska.Services
 {
@@ -36,15 +37,15 @@ namespace Doska.Services
                     });
             }
         }
-                public void WriteCatalogs()
-        {
-            using (FileStream fs = File.OpenWrite(JsonFileName))
-            {
-                string output = JsonConvert.SerializeObject(repository.Catalogs);
-                byte[] bytes = Encoding.Default.GetBytes(output);
-                fs.Write(bytes, 0, bytes.Length);
-            }
-        }
+        //public void WriteCatalogs()
+        //{
+        //    using (FileStream fs = File.OpenWrite(JsonFileName))
+        //    {
+        //        string output = JsonConvert.SerializeObject(repository.Catalogs);
+        //        byte[] bytes = Encoding.Default.GetBytes(output);
+        //        fs.Write(bytes, 0, bytes.Length);
+        //    }
+        //}
 
         //public void AddRating(string productId, int rating)
         //{
