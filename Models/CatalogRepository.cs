@@ -13,19 +13,36 @@ namespace Doska.Models
         {
 
         }
-        public IEnumerable<Catalog> Catalogs => new List<Catalog> { 
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Вакансии" },
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Ищут работу" },
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Курсы, образованме" },
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Деловые контакты" },
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Юридические услуги" },
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Финансовые услуги" },
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Переводы текстов" },
-            new Catalog { Title = "Работа и бизнес", Subtitle = "Разное" },
-            new Catalog { Title = "Эектротехника", Subtitle = "Телефоны и связь" },
-            new Catalog { Title = "Эектротехника", Subtitle = "Бытовая техника" },
-            new Catalog { Title = "Эектротехника", Subtitle = "Компьютеры, оргтехника" },
-
+        public CatalogRepository()
+        {
+            Catalogs = new List<Catalog> {
+            new Catalog {
+                Title = "Работа и бизнес test",
+                Subtitles = new List<Subtitle> {
+                    new Subtitle{ NameSubtitle="Вакансии" },
+                    new Subtitle{ NameSubtitle="Ищут работу" },
+                    new Subtitle{ NameSubtitle="Курсы, образованме" },
+                    new Subtitle{ NameSubtitle="Деловые контакты" },
+                    new Subtitle{ NameSubtitle="Юридические услуги" },
+                    new Subtitle{ NameSubtitle="Финансовые услуги" },
+                    new Subtitle{ NameSubtitle="Переводы текстов" },
+                    new Subtitle{ NameSubtitle="Разное" }
+                    }
+            },
+            new Catalog {
+                Title = "Эектротехника",
+                Subtitles = new List<Subtitle> {
+                    new Subtitle{ NameSubtitle="Телефоны и связь" },
+                    new Subtitle{ NameSubtitle="Бытовая техника" },
+                    new Subtitle{ NameSubtitle="Компьютеры, оргтехника" },
+                    new Subtitle{ NameSubtitle="Деловые контакты" },
+                    new Subtitle{ NameSubtitle="Юридические услуги" },
+                    new Subtitle{ NameSubtitle="Финансовые услуги" },
+                    new Subtitle{ NameSubtitle="Переводы текстов" },
+                    new Subtitle{ NameSubtitle="Разное" }
+                    }
+            }
         };
+        }
     }
 }
