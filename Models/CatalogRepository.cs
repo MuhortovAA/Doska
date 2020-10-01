@@ -9,10 +9,7 @@ namespace Doska.Models
     {
 
 
-        public CatalogRepository()
-        {
-
-        }
+        public IEnumerable<Catalog> Catalogs { get; }
         public CatalogRepository()
         {
             Catalogs = new List<Catalog> {
