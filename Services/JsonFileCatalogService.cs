@@ -29,7 +29,7 @@ namespace Doska.Services
         {
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
-                return JsonSerializer.Deserialize<Catalog[]>(jsonFileReader.ReadToEnd(),
+                return System.Text.Json.JsonSerializer.Deserialize<Catalog[]>(jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
