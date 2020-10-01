@@ -8,7 +8,11 @@ namespace Doska.Models
     public class Catalog
     {
         public string Title { get; set; }
-        public string Subtitle { get; set; }
+        public IEnumerable<Subtitle> Subtitles { get; set; }
 
+    }
+    public class Subtitle
+    {
+        public string NameSubtitle { get; set; }
     }
 }
