@@ -29,65 +29,71 @@
   {
     "Title": "Для детей",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
+      { "NameSubtitle": "Все для школы" },
+      { "NameSubtitle": "Детская одежда, обувь" },
+      { "NameSubtitle": "Игрушки, качели" },
+      { "NameSubtitle": "Коляски" },
+      { "NameSubtitle": "Детская мебель" },
+      { "NameSubtitle": "Автокресла, переноски" },
+      { "NameSubtitle": "Аксессуары и питание" },
+      { "NameSubtitle": "Кружки, садики, секции" },
+      { "NameSubtitle": "Детские мероприятия" },
       { "NameSubtitle": "Разное" }
     ]
   },
   {
     "Title": "Транспорт",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
-      { "NameSubtitle": "Разное" }
+      { "NameSubtitle": "Легковые авто" },
+      { "NameSubtitle": "Грузовые автомобили" },
+      { "NameSubtitle": "Мото транспорт" },
+      { "NameSubtitle": "Велосипеды, самокаты" },
+      { "NameSubtitle": "Обмен легковых авто" },
+      { "NameSubtitle": "Ремонт и запчасти" },
+      { "NameSubtitle": "Перевозка грузов и людей" },
+      { "NameSubtitle": "Аренда транспорта" },
+      { "NameSubtitle": "Другое..." }
     ]
   },
   {
     "Title": "Одежда, обувь",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
+      { "NameSubtitle": "Женская одежда" },
+      { "NameSubtitle": "Мужская одежда" },
+      { "NameSubtitle": "Детская одежда, обувь" },
+      { "NameSubtitle": "Обувь" },
+      { "NameSubtitle": "Часы, очки, сумки, Украшения, бижутерия" },
+      { "NameSubtitle": "Спецодежда" },
+      { "NameSubtitle": "Услуги швей и ателье" },
       { "NameSubtitle": "Разное" }
     ]
   },
   {
     "Title": "Животные",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
+      { "NameSubtitle": "Собаки, щенки" },
+      { "NameSubtitle": "Кошки, котята" },
+      { "NameSubtitle": "Грызуны" },
+      { "NameSubtitle": "Попугаи и птицы" },
+      { "NameSubtitle": "Рыбки, аквариумы" },
+      { "NameSubtitle": "Экзотические животные" },
+      { "NameSubtitle": "Сельхоз животные" },
+      { "NameSubtitle": "Ветеринария" },
+      { "NameSubtitle": "Поиски, находки" },
       { "NameSubtitle": "Разное" }
     ]
   },
   {
     "Title": "Недвижимость",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
+      { "NameSubtitle": "Квартиры" },
+      { "NameSubtitle": "Дома, хозяйства" },
+      { "NameSubtitle": "Дачи и огороды" },
+      { "NameSubtitle": "Помещения" },
+      { "NameSubtitle": "Офисы" },
+      { "NameSubtitle": "Земля и участки" },
+      { "NameSubtitle": "Гаражи" },
+      { "NameSubtitle": "Услуги риелтора" },
       { "NameSubtitle": "Разное" }
     ]
   },
@@ -101,59 +107,64 @@
       { "NameSubtitle": "Юридические услуги" },
       { "NameSubtitle": "Финансовые услуги" },
       { "NameSubtitle": "Переводы текстов" },
-      { "NameSubtitle": "Разное" }
+      { "NameSubtitle": "Другое..." }
     ]
   },
   {
     "Title": "Сельское хозяйство",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
+      { "NameSubtitle": "Животноводство" },
+      { "NameSubtitle": "Птицеводство" },
+      { "NameSubtitle": "Рыбное хозяйство" },
+      { "NameSubtitle": "Сельхозработы" },
+      { "NameSubtitle": "Сельхозтехника" },
+      { "NameSubtitle": "Овощеводство, садоводство" },
+      { "NameSubtitle": "Удобрения и химикаты" },
+       { "NameSubtitle": "Семена и рассада" },
+       { "NameSubtitle": "Продовольствие" },
       { "NameSubtitle": "Разное" }
     ]
   },
   {
     "Title": "Строительство",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
+      { "NameSubtitle": "Стройматериалы" },
+      { "NameSubtitle": "Строительные работы" },
+      { "NameSubtitle": "Инструмент и техника" },
+      { "NameSubtitle": "Аренда инструмента" },
+      { "NameSubtitle": "Сантехника" },
+      { "NameSubtitle": "Садовая техника" },
+      { "NameSubtitle": "Проекты, дизайн" }
+      { "NameSubtitle": "Перевозка и погрузка" },
       { "NameSubtitle": "Разное" }
     ]
   },
   {
     "Title": "Производство",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
+      { "NameSubtitle": "Оборудование Производство, заказы" },
+      { "NameSubtitle": "Хозяйственные работы" },
+      { "NameSubtitle": "Строительство и ремонт" },
+      { "NameSubtitle": "Перевозка и погрузка" },
       { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
-      { "NameSubtitle": "Разное" }
+      { "NameSubtitle": "Продовольствие" },
+      { "NameSubtitle": "Дрова, брикеты, гранулы" },
+      { "NameSubtitle": "Другое..." }
     ]
   },
   {
     "Title": "Отдых, увлечения",
     "Subtitles": [
-      { "NameSubtitle": "Вакансии" },
-      { "NameSubtitle": "Ищут работу" },
-      { "NameSubtitle": "Курсы, образованме" },
-      { "NameSubtitle": "Деловые контакты" },
-      { "NameSubtitle": "Юридические услуги" },
-      { "NameSubtitle": "Финансовые услуги" },
-      { "NameSubtitle": "Переводы текстов" },
-      { "NameSubtitle": "Разное" }
+      { "NameSubtitle": "Хобби, увлечения" },
+      { "NameSubtitle": "Коллекционирование" },
+      { "NameSubtitle": "Билеты, концерты, куда пойти" },
+      { "NameSubtitle": "Музыка, инструменты, обучение" },
+      { "NameSubtitle": "Книги" },
+      { "NameSubtitle": "Спорт, активный отдых" },
+      { "NameSubtitle": "Охота, рыбалка" },
+      { "NameSubtitle": "Туризм" },
+      { "NameSubtitle": "Знакомства, Друзья Одноклассники" },
+      { "NameSubtitle": "Всё остальное ..." }
     ]
   }
 
