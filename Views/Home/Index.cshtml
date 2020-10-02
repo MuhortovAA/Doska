@@ -1,22 +1,27 @@
 ﻿@model IEnumerable<Catalog>
-<table>
-    <caption>Доска обьявлений</caption>
+<div class="container">
+    <div class="row">
 
-    @*@foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))*@
-        @foreach (Catalog catalog in Model)
+        <table class="table table-bordered">
+            <caption>Доска обьявлений</caption>
 
-        {
+            @*@foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))*@
+            @foreach (Catalog catalog in Model)
 
-            <tr>
-                <th>@catalog.Title</th>
-            </tr>
-            @foreach (Subtitle subtitle in catalog.Subtitles)
             {
+
                 <tr>
-                    <td>
-                        @subtitle.NameSubtitle
-                    </td>
+                    <th>@catalog.Title</th>
                 </tr>
+                @foreach (Subtitle subtitle in catalog.Subtitles)
+                {
+                    <tr>
+                        <td>
+                            @subtitle.NameSubtitle
+                        </td>
+                    </tr>
+                }
             }
-        }
-</table>
+        </table>
+    </div>
+</div>

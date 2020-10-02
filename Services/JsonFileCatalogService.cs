@@ -30,11 +30,12 @@ namespace Doska.Services
         {
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
-                return System.Text.Json.JsonSerializer.Deserialize<Catalog[]>(jsonFileReader.ReadToEnd(),
-                    new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
+                return System.Text.Json.JsonSerializer.Deserialize<Catalog[]>(jsonFileReader.ReadToEnd(), null
+                    //new JsonSerializerOptions
+                    //{
+                    //    PropertyNameCaseInsensitive = true
+                    //}
+                    );
             }
         }
         //public void WriteCatalogs()
