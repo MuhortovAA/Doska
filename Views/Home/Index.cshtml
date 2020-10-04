@@ -1,27 +1,28 @@
-﻿@model IEnumerable<Catalog>
+﻿ @model IEnumerable<Catalog>
 <div class="container">
     <div class="row">
 
-        <table class="table table-bordered">
-            <caption>Доска обьявлений</caption>
 
-            @*@foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))*@
-            @foreach (Catalog catalog in Model)
-
-            {
-
-                <tr>
-                    <th>@catalog.Title</th>
+        @*@foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))*@
+        @foreach (Catalog catalog in Model)
+        {
+            <div class="card col-md-3 shadow-sm">
+                <table class="table table-borderless table-hover">
+                    <tr>
+                        <th>
+                            <a href="#">@catalog.Title</a>
+                    </th>
                 </tr>
                 @foreach (Subtitle subtitle in catalog.Subtitles)
                 {
                     <tr>
-                        <td>
-                            @subtitle.NameSubtitle
+                        <td class="p-0">
+                            <a asp-controller="Home" asp-action="CreateAd">@subtitle.NameSubtitle</a>
                         </td>
                     </tr>
                 }
-            }
-        </table>
+            </table>
+        </div>
+    }
     </div>
 </div>
