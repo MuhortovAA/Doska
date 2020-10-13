@@ -10,6 +10,9 @@ namespace Doska.Models
 
 
         public IEnumerable<Catalog> Catalogs { get; }
+
+        public IEnumerable<vCatalog> vCatalog => throw new NotImplementedException();
+
         public CatalogRepository()
         {
             //Catalogs = new List<Catalog> {

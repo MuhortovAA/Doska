@@ -8,6 +8,7 @@ namespace Doska.Models
     public interface ICatalogRepository
     {
         IEnumerable<Catalog> Catalogs { get;}
+        IEnumerable<vCatalog> vCatalog { get; }
 
     }
 }

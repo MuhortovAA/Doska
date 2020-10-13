@@ -18,22 +18,15 @@ namespace Doska.Models
             context.Database.Migrate();
             if (!context.Catalogs.Any())
             {
-                context.Catalogs.AddRange(
-                    new Catalog
-                    {
-                        //id = 1,
-                        idSubtitle = 1,
-                        idTitle = 1
-                    }
-                );
+                context.Catalogs.AddRange(data.GetCatalog_1()); ;
             }
             if (!context.Subtitles.Any())
-            { 
-                context.Subtitles.AddRange(data.GetSubtitles());
+            {
+                context.Subtitles.AddRange(data.GetSubtitles_1());
             }
             if (!context.Titles.Any())
             {
-                context.Titles.AddRange(data.GetTitles());
+                context.Titles.AddRange(data.GetTitle_1());
             }
             if (!context.Catalogs.Any() && !context.Subtitles.Any() && !context.Titles.Any())
             {

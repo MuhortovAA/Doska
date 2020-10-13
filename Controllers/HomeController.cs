@@ -18,8 +18,8 @@ namespace Doska.Controllers
 
         public IActionResult Index()
         {
-            var res = repository.Catalogs;
-            return View(repository.Catalogs);
+            //List<vCatalog> res = repository.vCatalog.ToList();
+            return View(repository.vCatalog);
         }
         public IActionResult CreatedAd(string id)
         {

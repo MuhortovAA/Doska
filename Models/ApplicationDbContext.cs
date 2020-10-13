@@ -16,6 +16,7 @@ namespace Doska.Models
         public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Subtitle> Subtitles { get; set; }
         public DbSet<Title> Titles { get; set; }
+        public DbQuery<vCatalog> vCatalog { get; set; }
     }
     //public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     //{

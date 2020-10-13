@@ -13,5 +13,7 @@ namespace Doska.Models
             context = ctx;
         }
         public IEnumerable<Catalog> Catalogs => context.Catalogs;
+
+        public IEnumerable<vCatalog> vCatalog => context.vCatalog;
     }
 }
