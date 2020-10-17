@@ -5,15 +5,13 @@ using System.Threading.Tasks;
 
 namespace Doska.Models
 {
-    public class EFCatalogRepository : ICatalogRepository
+    public class EFCatalogRepository : IvCatalogRepository
     {
         private ApplicationDbContext context;
         public EFCatalogRepository(ApplicationDbContext ctx)
         {
             context = ctx;
         }
-        public IEnumerable<Catalog> Catalogs => context.Catalogs;
-
-        public IEnumerable<vCatalog> vCatalog => context.vCatalog;
+        public IEnumerable<vCatalog> Catalogs => context.vCatalog;
     }
 }

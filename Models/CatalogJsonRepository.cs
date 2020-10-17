@@ -10,8 +10,6 @@ namespace Doska.Models
     {
         public IEnumerable<Catalog> Catalogs { get; }
 
-        public IEnumerable<vCatalog> vCatalog => throw new NotImplementedException();
-
         public CatalogJsonRepository(JsonFileCatalogService catalogs)
         {
             Catalogs = catalogs.GetCatalogs();

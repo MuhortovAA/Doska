@@ -28,8 +28,8 @@ namespace Doska
             });
             services.AddTransient<JsonFileCatalogService>();
             //services.AddTransient<ICatalogRepository, CatalogRepository>();
-            //services.AddTransient<ICatalogRepository, CatalogJsonRepository>();
-            services.AddTransient<ICatalogRepository, EFCatalogRepository>();
+            services.AddTransient<ICatalogRepository, CatalogJsonRepository>();
+            services.AddTransient<IvCatalogRepository, EFCatalogRepository>();
 
             services.AddMvc();
         }
