@@ -4,27 +4,29 @@
 
 
         @*@foreach (IGrouping<string, string> catalogGroup in Model.GroupBy(catalog => catalog.Title, catalog => catalog.Subtitle))*@
-        @foreach (IGrouping<string, string> gCatalogs in Model.GroupBy(vcatalog=>vcatalog.NameTitle, vcatalog=>vcatalog.NameSubtitle))
-        {
-            <div class="card col-md-3 shadow-sm">
-                <table class="table table-borderless table-hover">
-                    <tr>
-                        <th>
-                            <a href="#">@gCatalogs.Key</a>
-                        </th>
-                    </tr>
-                    @foreach (var subtitle in gCatalogs)
-                    {
+        @*@foreach (IGrouping<string, string> gCatalogs in Model.GroupBy(c => c.NameTitle, c => c.NameSubtitle))*@
+            @foreach (var groups in Model.GroupBy(c => c.NameTitle))
+
+            {
+                <div class="card col-md-3 shadow-sm">
+                    <table class="table table-borderless table-hover">
                         <tr>
-                            <td class="p-0">
-                                <a asp-action="CreatedAd" asp-controller="Home" asp-route-id="12">
-                                    @subtitle
-                                </a>
-                            </td>
+                            <th>
+                                <a href="#">@groups.Key</a>
+                            </th>
                         </tr>
-                    }
-                </table>
-            </div>
-        }
+                        @foreach (var g in groups)
+                        {
+                            <tr>
+                                <td class="p-0">
+                                    <a asp-action="CreatedAd" asp-controller="Home" asp-route-id="@g.id">
+                                        @g.NameSubtitle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
     </div>
 </div>

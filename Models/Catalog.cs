@@ -43,51 +43,15 @@ namespace Doska.Models
         }
         public IEnumerable<Catalog> GetCatalogs()
         {
-            //var result = repository.GroupBy(
-            //    c => c.Title,
-            //    c => c.Subtitles,
-            //    (key, g) => new Catalog { Title = key, Subtitles = g.ToArray<SubtitleJson>() });
             return repository;
         }
-        //public Subtitle[] GetSubtitles_1()
-        //{
-        //    return new Subtitle[]
-        //    {
-        //           new Subtitle { NameSubtitle = "Вакансии", idTitle=1 },
-        //           new Subtitle { NameSubtitle = "Ищут работу", idTitle=1 },
-        //           new Subtitle { NameSubtitle = "Курсы, образование", idTitle=1 },
-        //           new Subtitle { NameSubtitle = "Деловые контакты", idTitle=1 },
-        //           new Subtitle { NameSubtitle = "Юридические услуги", idTitle=1 },
-        //           new Subtitle { NameSubtitle = "Финансовые услуги", idTitle=1 },
-        //           new Subtitle { NameSubtitle = "Переводы текстов", idTitle=1 },
-        //           new Subtitle { NameSubtitle = "Разное", idTitle=1 }
-        //    };
-        //}
         public Title[] GetTitles()
         {
             var result = repository.GroupBy(
                 c => c.Title,
                 c => c.Subtitles,
-                (key, g) => new Title { NameTitle = key/*, subtitles = g.ToList()*/ }).ToArray<Title>();
+                (key, g) => new Title { NameTitle = key}).ToArray<Title>();
             return result;
         }
-        //public Title[] GetTitles()
-        //{
-        //    return new Title[]
-        //    {
-        //         new Title { NameTitle = "Работа и бизнес" },   /*1*/
-        //         new Title { NameTitle = "Эектротехника" },     /*2*/
-        //            new Title { NameTitle = "Транспорт" },      /*3*/
-        //            new Title { NameTitle = "Одежда, обувь" },
-        //            new Title { NameTitle = "Животные" },
-        //            new Title { NameTitle = "Недвижимость" },
-        //            new Title { NameTitle = "Для дома" },
-        //            new Title { NameTitle = "Сельское хозяйство" },
-        //            new Title { NameTitle = "Строительство" },
-        //            new Title { NameTitle = "Производство" },
-        //            new Title { NameTitle = "Отдых, увлечения" }
-        //    };
-        //}
-
     }
 }

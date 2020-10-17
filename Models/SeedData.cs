@@ -19,10 +19,7 @@ namespace Doska.Models
 
             ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
             context.Database.Migrate();
-            //if (!context.Catalogs.Any())
-            //{
-            //    context.Catalogs.AddRange(data.GetCatalog_1()); ;
-            //}
+
             if (!context.Subtitles.Any())
             {
                 int count = 0;
@@ -37,26 +34,7 @@ namespace Doska.Models
                         context.SaveChanges();
                     }
                 }
-                //foreach (Subtitle item in data.GetSubtitles_1())
-                //{
-                //    context.Subtitles.Add(item);
-                //    context.SaveChanges();
-                //}
-                //context.Subtitles.AddRange(data.GetSubtitles_1());
             }
-            //if (!context.Titles.Any())
-            //{
-            //    foreach (Title item in data.GetTitles())
-            //    {
-            //        context.Titles.Add(item);
-            //        context.SaveChanges();
-            //    }
-            //    //context.Titles.AddRange(data.GetTitle_1());
-            //}
-            //if (!context.Catalogs.Any() && !context.Subtitles.Any() && !context.Titles.Any())
-            //{
-            //    context.SaveChanges();
-            //}
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Doska.Controllers
         }
         public IActionResult Index()
         {
-            var result = repository.Catalogs;
+            var result = repository.Catalogs.GroupBy(c => c.NameTitle, c => c.NameSubtitle, (key, g) => new { title = key, subtitles = g.ToList() });
             return View(repository.Catalogs);
         }
         public IActionResult CreatedAd(string id)

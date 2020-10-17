@@ -18,9 +18,5 @@ namespace Doska.Models
         public DbSet<Title> Titles { get; set; }
         public DbSet<vCatalog> vCatalog { get; set; }
     }
-    //public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
-    //{
 
-    //    public ApplicationDbContext CreateDbContext(string[] args) => Program.CreateHostBuilder(args).ConfigureServices.GetRequiredService<ApplicationDbContext>();
-    //}
 }
