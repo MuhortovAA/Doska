@@ -1,0 +1,11 @@
+﻿@model IEnumerable<vCatalog>
+
+<div>Подать рекламу</div>
+<div class="list-group">
+    <li></li>
+    @foreach (var groups in Model.GroupBy(c => c.NameTitle))
+
+    {
+        <a href="#" class="list-group-item list-group-item-action">@groups.Key</a>
+    }
+</div>

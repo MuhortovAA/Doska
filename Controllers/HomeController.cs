@@ -16,13 +16,17 @@ namespace Doska.Controllers
         }
         public IActionResult Index()
         {
-            var result = repository.Catalogs.GroupBy(c => c.NameTitle, c => c.NameSubtitle, (key, g) => new { title = key, subtitles = g.ToList() });
+            //var result = repository.Catalogs.GroupBy(c => c.NameTitle, c => c.NameSubtitle, (key, g) => new { title = key, subtitles = g.ToList() });
             return View(repository.Catalogs);
         }
         public IActionResult CreatedAd(string id)
         {
-            var result = id;
-            return View();
+            
+            return View("CreatedAd", id);
+        }
+        public IActionResult CreateAds()
+        {
+            return View(repository.Catalogs);
         }
     }
 }
