@@ -33,6 +33,7 @@ namespace Doska.Models
         public int id { get; set; }
         public string NameTitle { get; set; }
         public string NameSubtitle { get; set; }
+        public int TitleId { get; set; }
     }
     public class DataDoska
     {

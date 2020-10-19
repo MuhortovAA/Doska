@@ -1,11 +1,43 @@
 ﻿@model IEnumerable<vCatalog>
 
 <div>Подать рекламу</div>
-<div class="list-group">
-    <li></li>
-    @foreach (var groups in Model.GroupBy(c => c.NameTitle))
 
+<div id="accordion">
+    @foreach (var groups in Model.GroupBy(c => c.TitleId, (key, g) => new { titleid = key, subtitles = g.ToList() }))
     {
-        <a href="#" class="list-group-item list-group-item-action">@groups.Key</a>
+        <div class="card">
+            <div class="card-header" id="heading@(groups.titleid)">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse@(groups.titleid)" aria-expanded="true" aria-controls="collapse@(groups.titleid)">
+                        @groups.titleid
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse@(groups.titleid)" class="collapse" aria-labelledby="heading@(groups.titleid)" data-parent="#accordion">
+                <div class="card-body">
+                    @foreach (var g in groups.subtitles)
+                    {
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">@g.NameSubtitle</a>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     }
 </div>
+
+
+
+
+
+@*<div class="list-group">
+        <li></li>
+        @foreach (var groups in Model.GroupBy(c => c.NameTitle))
+
+        {
+            <a href="#" class="list-group-item list-group-item-action">@groups.Key</a>
+        }
+    </div>*@
