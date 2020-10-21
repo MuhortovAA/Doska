@@ -19,14 +19,18 @@ namespace Doska.Controllers
             //var result = repository.Catalogs.GroupBy(c => c.NameTitle, c => c.NameSubtitle, (key, g) => new { title = key, subtitles = g.ToList() });
             return View(repository.Catalogs);
         }
-        public IActionResult CreatedAd(string id)
-        {
+        //public IActionResult CreatedAd(string id)
+        //{
             
-            return View("CreatedAd", id);
-        }
-        public IActionResult CreateAds()
+        //    return View("CreatedAd", id);
+        //}
+        public IActionResult SelectAds()
         {
             return View(repository.Catalogs);
+        }
+        public IActionResult AddAds(string id)
+        {
+            return View();
         }
     }
 }
