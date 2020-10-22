@@ -28,9 +28,9 @@ namespace Doska.Controllers
         {
             return View(repository.Catalogs);
         }
-        public IActionResult AddAds(string id)
+        public IActionResult AddAds(int id)
         {
-            return View();
+            return View(repository.GetCatalog(id));
         }
     }
 }

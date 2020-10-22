@@ -13,5 +13,8 @@ namespace Doska.Models
             context = ctx;
         }
         public IEnumerable<vCatalog> Catalogs => context.vCatalog;
+
+        public vCatalog GetCatalog(int id) => context.vCatalog.First(c => c.id == id);
+
     }
 }
