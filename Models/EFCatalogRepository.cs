@@ -14,6 +14,12 @@ namespace Doska.Models
         }
         public IEnumerable<vCatalog> Catalogs => context.vCatalog;
 
+        public void CreateAds(Ads ads)
+        {
+            context.Adses.Add(ads);
+            context.SaveChanges();
+        }
+
         public vCatalog GetCatalog(int id) => context.vCatalog.First(c => c.id == id);
 
     }

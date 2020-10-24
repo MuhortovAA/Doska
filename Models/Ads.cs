@@ -9,15 +9,35 @@ namespace Doska.Models
     {
         public int Id { get; set; }
         public int IdCatalog { get; set; }
-        public string AdsText { get; set; }
-        public string Phone { get; set; }
-        public DateTime AdsCreate { get; set; }
+        public int IdCustomer { get; set; }
+        public string AdsText { get; set; } = "";
+        public DateTime AdsCreate { get; set; } = DateTime.Now;
+        //public string Phone { get; set; }
+        //public vCatalog catalog { get; set; }
+        //public string TitlePath => $"\\{catalog.NameTitle}\\{catalog.NameSubtitle}\\";
+
+    }
+    public class AdsModel
+    {
+        public int IdCatalog { get; set; }
+
+        public int IdCustomer { get; set; }
+
+        public string AdsText { get; set; } = "";
+
+        public vCatalog catalog { get; set; }
+        public string TitlePath => $"\\{catalog.NameTitle}\\{catalog.NameSubtitle}\\";
+
 
     }
     public class AdsCreateModel
     {
+        public int IdCustomer { get; set; }
 
-        public Ads Item { get; set; }
-        public vCatalog Catalog { get; set; }
+        public int IdCatalog { get; set; }
+
+        public string TitlePath { get; set; }
+
+        public string AdsText { get; set; }
     }
 }

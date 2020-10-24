@@ -13,5 +13,6 @@ namespace Doska.Models
     {
         IEnumerable<vCatalog> Catalogs { get; }
         vCatalog GetCatalog(int id);
+        void CreateAds(Ads ads);
     }
 }

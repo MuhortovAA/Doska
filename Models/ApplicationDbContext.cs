@@ -17,6 +17,7 @@ namespace Doska.Models
         public DbSet<Subtitle> Subtitles { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<vCatalog> vCatalog { get; set; }
+        public DbSet<Ads> Adses { get; set; }
     }
 
 }
