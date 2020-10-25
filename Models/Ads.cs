@@ -12,9 +12,7 @@ namespace Doska.Models
         public int IdCustomer { get; set; }
         public string AdsText { get; set; } = "";
         public DateTime AdsCreate { get; set; } = DateTime.Now;
-        //public string Phone { get; set; }
-        //public vCatalog catalog { get; set; }
-        //public string TitlePath => $"\\{catalog.NameTitle}\\{catalog.NameSubtitle}\\";
+
 
     }
     public class AdsModel
@@ -40,4 +38,5 @@ namespace Doska.Models
 
         public string AdsText { get; set; }
     }
+    
 }
