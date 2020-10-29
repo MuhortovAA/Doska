@@ -30,5 +30,14 @@ namespace Doska.Models
             return result;
         }
 
+        public List<Ads> GetAdses(int Id)
+        {
+            var IdCatalogParam = new SqlParameter("@IdCatalog", Id);
+            var result = context.Adses.FromSqlRaw("exec [dbo].[sp_SelectAdses] @IdCatalog", IdCatalogParam).ToList();
+
+            return result;
+        }
+
+        
     }
 }

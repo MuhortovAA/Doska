@@ -15,5 +15,6 @@ namespace Doska.Models
         vCatalog GetCatalog(int id);
         void CreateAds(Ads ads);
         List<Ads> GetCustomerAdses(int Id);
+        List<Ads> GetAdses(int Id);
     }
 }

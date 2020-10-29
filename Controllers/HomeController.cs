@@ -22,7 +22,7 @@ namespace Doska.Controllers
         {
             return View(repository.Catalogs);
         }
-        public IActionResult SelectAds()
+        public IActionResult CreateAds()
         {
             return View(repository.Catalogs);
         }
@@ -38,12 +38,18 @@ namespace Doska.Controllers
             Ads ads = mapper.Map<Ads>(adsCreate);
             repository.CreateAds(ads);
 
-            return RedirectToAction(nameof(ViewAds), new { id = ads.IdCustomer });
+            return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
         }
 
-        public IActionResult ViewAds(int id)
+        public IActionResult ViewCustomerAds(int id)
         {
             List<Ads> result = repository.GetCustomerAdses(id);
+            return View(result);
+        }
+        public IActionResult ViewSelectAds(int id)
+        {
+            List<Ads> result = repository.GetAdses(id);
+
             return View(result);
         }
     }
