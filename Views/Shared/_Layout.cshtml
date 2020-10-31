@@ -41,6 +41,7 @@
         </nav>
     </header>
     <div class="bg-light">
+        @if (TempData["message"] != null) {<div class="alert-success">@TempData["message"]</div> }
         @RenderBody()
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

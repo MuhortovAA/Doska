@@ -37,6 +37,7 @@ namespace Doska.Controllers
         {
             Ads ads = mapper.Map<Ads>(adsCreate);
             repository.CreateAds(ads);
+            TempData["message"] = $"Ads number:{ads.IdCatalog} has been created.";
 
             return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
         }
