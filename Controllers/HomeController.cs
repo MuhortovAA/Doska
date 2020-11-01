@@ -33,13 +33,20 @@ namespace Doska.Controllers
             return View(adsCreate);
         }
         [HttpPost]
-        public RedirectToActionResult AddAds(AdsCreateModel adsCreate)
+        public IActionResult AddAds(AdsCreateModel adsCreate)
         {
             Ads ads = mapper.Map<Ads>(adsCreate);
-            repository.CreateAds(ads);
-            TempData["message"] = $"Ads number:{ads.IdCatalog} has been created.";
+            if (ModelState.IsValid)
+            {
+                repository.CreateAds(ads);
+                TempData["message"] = $"Ads number:{ads.IdCatalog} has been created.";
+                return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
+            }
+            else
+            {
+                return View(adsCreate);
+            }
 
-            return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
         }
 
         public IActionResult ViewCustomerAds(int id)

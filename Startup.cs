@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 
 namespace Doska
 {
@@ -24,10 +25,12 @@ namespace Doska
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration["Data:DoskaCatalogs:ConnectionString"]);
-            });
+            services.AddDbContext<ApplicationDbContext>(options => { options.UseSqlServer(Configuration["Data:DoskaCatalogs:ConnectionString"]); });
+            services.AddDbContext<AppIdentityDbContext>(options => { options.UseSqlServer(Configuration["Data:DoskaIdentity:ConnectionString"]); });
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddTransient<JsonFileCatalogService>();
             //services.AddTransient<ICatalogRepository, CatalogRepository>();
             services.AddTransient<ICatalogRepository, CatalogJsonRepository>();
@@ -43,7 +46,10 @@ namespace Doska
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
