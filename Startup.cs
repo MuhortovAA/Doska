@@ -48,16 +48,17 @@ namespace Doska
             }
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            //app.UseSession();
-            app.UseAuthentication();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            //app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            SeedData.EnsurePopulated(app);
-            IdentitySeedData.EnsurePopulated(app);
+            //SeedData.EnsurePopulated(app);
+            //IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

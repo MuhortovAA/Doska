@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Doska.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 
@@ -22,10 +23,13 @@ namespace Doska.Controllers
         {
             return View(repository.Catalogs);
         }
+        [Authorize]
         public IActionResult CreateAds()
         {
             return View(repository.Catalogs);
         }
+        [Authorize]
+
         public IActionResult AddAds(int id)
         {
             AdsModel adsModel = new AdsModel { IdCatalog = id, IdCustomer = 1, catalog = repository.GetCatalog(id) };
@@ -33,6 +37,7 @@ namespace Doska.Controllers
             return View(adsCreate);
         }
         [HttpPost]
+        [Authorize]
         public IActionResult AddAds(AdsCreateModel adsCreate)
         {
             Ads ads = mapper.Map<Ads>(adsCreate);
@@ -48,6 +53,8 @@ namespace Doska.Controllers
             }
 
         }
+
+        [Authorize]
 
         public IActionResult ViewCustomerAds(int id)
         {

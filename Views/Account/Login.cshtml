@@ -1,0 +1,29 @@
+﻿@model LoginModel
+@{
+    ViewBag.Title = "Log In";
+
+}
+<div class="login-form">
+
+    <form asp-action="Login" asp-controller="Account" method="post">
+        <h2 class="text-center">Вход</h2>
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <input type="hidden" asp-for="ReturnUrl" />
+        <div class="form-group">
+            @*<label asp-for="Name"></label>*@
+            <div><span asp-validation-for="Name" class="text-danger"></span></div>
+            <input asp-for="Name" class="form-control" placeholder="Пользователь" />
+        </div>
+        <div class="form-group">
+            @*<label asp-for="Password"></label>*@
+            <div><span asp-validation-for="Password" class="text-danger"></span></div>
+            <input asp-for="Password" class="form-control" placeholder="Пароль" />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Войти</button>
+        <div class="form-control">
+            <label class="float-left form-check-label"><input type="checkbox">Запомнить</label>
+            <a href="#" class="float-right">Забыли пароль?</a>
+        </div>
+    </form>
+    <p class="text-center"><a href="#">Регистрация</a></p>
+</div>

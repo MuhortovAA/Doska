@@ -19,6 +19,7 @@ namespace Doska.Models
             if(user==null)
             {
                 user = new IdentityUser("Admin");
+                
                 await userManager.CreateAsync(user, adminPassword);
             }
         }
