@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Doska.Models
+@*@using System.Linq;*@
+@*@using System.Security.Claims;*@
+
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -27,12 +35,25 @@
                                 <li class="nav-item">
                                     <a class="nav-link">Валюта: BYN</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-action="Create" asp-controller="Account">Регистрация</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-action="Logout" asp-controller="Account">Выход</a>
-                                </li>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Logout" asp-controller="Account">Выход</a>
+                                    </li>
+                                        <li>
+                                             <a class="nav-link">Пользователь: @UserManager.GetUserName(User)</a>
+                                        </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Create" asp-controller="Account">Регистрация</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Login" asp-controller="Account">Вход</a>
+                                    </li>
+                                }
+
                             </ul>
                         </div>
 

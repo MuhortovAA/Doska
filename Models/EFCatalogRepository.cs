@@ -23,7 +23,7 @@ namespace Doska.Models
         }
 
         public vCatalog GetCatalog(int id) => context.vCatalog.First(c => c.id == id);
-        public List<Ads> GetCustomerAdses(int Id)
+        public List<Ads> GetCustomerAdses(string Id)
         {
             var IdCustomerParam = new SqlParameter("@IdCustomer", Id);
             var result = context.Adses.FromSqlRaw("exec [dbo].[sp_CustomerAdses] @IdCustomer", IdCustomerParam).ToList();

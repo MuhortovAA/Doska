@@ -9,7 +9,7 @@ namespace Doska.Models
     {
         public int Id { get; set; }
         public int IdCatalog { get; set; }
-        public int IdCustomer { get; set; }
+        public string IdCustomer { get; set; }
         public string AdsText { get; set; } = "";
         public DateTime AdsCreate { get; set; } = DateTime.Now;
 
@@ -19,7 +19,7 @@ namespace Doska.Models
     {
         public int IdCatalog { get; set; }
 
-        public int IdCustomer { get; set; }
+        public string IdCustomer { get; set; }
 
         public string AdsText { get; set; } = "";
 
@@ -30,7 +30,7 @@ namespace Doska.Models
     }
     public class AdsCreateModel
     {
-        public int IdCustomer { get; set; }
+        public string IdCustomer { get; set; }
 
         public int IdCatalog { get; set; }
 
