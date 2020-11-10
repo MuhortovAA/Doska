@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace Doska.Controllers
 {
@@ -18,12 +19,15 @@ namespace Doska.Controllers
         private UserManager<IdentityUser> userManager;
         private IvCatalogRepository repository;
         private IMapper mapper;
+        private readonly ILogger logger;
 
-        public HomeController(IvCatalogRepository repo, IMapper _mapper, UserManager<IdentityUser> userMgr)
+        public HomeController(IvCatalogRepository repo, IMapper _mapper, UserManager<IdentityUser> userMgr,
+            ILogger<HomeController> _logger)
         {
             userManager = userMgr;
             repository = repo;
             mapper = _mapper;
+            logger = _logger;
         }
         public IActionResult Index()
         {
@@ -36,7 +40,7 @@ namespace Doska.Controllers
         }
         [Authorize]
 
-        public async Task<IActionResult> AddAds(int id)
+        public IActionResult AddAds(int id)
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             AdsModel adsModel = new AdsModel { IdCatalog = id, IdCustomer = userId, catalog = repository.GetCatalog(id) };
@@ -52,6 +56,7 @@ namespace Doska.Controllers
             {
                 repository.CreateAds(ads);
                 TempData["message"] = $"Ads number:{ads.IdCatalog} has been created.";
+                logger.LogInformation($"Add ads's customer ID:{adsCreate.IdCustomer},  text: {adsCreate.AdsText}");
                 return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
             }
             else

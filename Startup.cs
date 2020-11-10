@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace Doska
 {
@@ -40,7 +41,7 @@ namespace Doska
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -59,6 +60,7 @@ namespace Doska
             });
             //SeedData.EnsurePopulated(app);
             //IdentitySeedData.EnsurePopulated(app);
+            loggerFactory.AddFile("Logs/{Date}.log");
         }
     }
 }

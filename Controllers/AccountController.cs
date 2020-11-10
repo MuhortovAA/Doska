@@ -7,6 +7,7 @@ using Doska.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Doska.Controllers
 {
@@ -15,11 +16,14 @@ namespace Doska.Controllers
     {
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
-        public AccountController(UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr)
+        private readonly ILogger logger;
+
+        public AccountController(UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr,
+            ILogger<AccountController> _logger)
         {
             userManager = userMgr;
             signInManager = signInMgr;
-            //IdentitySeedData.EnsurePopulated(userMgr).Wait();
+            logger = _logger;
         }
         [AllowAnonymous]
         public IActionResult Login(string returnUrl)
@@ -40,6 +44,8 @@ namespace Doska.Controllers
                     var result = await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false);
                     if (result.Succeeded)
                     {
+                        logger.LogInformation($"Login succeeded {user.Id}");
+
                         string strUrl = loginModel?.ReturnUrl ?? "/";
                         return Redirect(strUrl);
 
@@ -71,6 +77,7 @@ namespace Doska.Controllers
                 if (result.Succeeded)
                 {
                     TempData["message"] = $"Пользователь: {user.UserName} успешно создан.";
+                    logger.LogInformation($"Create Login succeeded {user.Id}");
 
                     return Redirect("/Home/Index/");
                 } else
