@@ -38,6 +38,12 @@ namespace Doska.Models
             return result;
         }
 
-        
+        public List<Ads> GetAdses(string findtext)
+        {
+            var findtextParam = new SqlParameter("@find", findtext);
+            var result = context.Adses.FromSqlRaw("exec [dbo].[sp_FindAdses] @find", findtextParam).ToList();
+
+            return result;
+        }
     }
 }

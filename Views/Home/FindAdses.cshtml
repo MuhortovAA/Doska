@@ -1,0 +1,35 @@
+﻿@model string 
+@{
+    ViewData["Title"] = "Поиск";
+}
+
+<h1>FindAdses</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Home" asp-action="FindAdses">
+            <p>
+                Введите текст: <input class="form-control" type="text" name="findtext">
+                <input class="btn btn-primary" type="submit" value="Найти" />
+            </p>
+        </form>
+
+
+        @*<form asp-action="FindAds">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="textfind" class="control-label"></label>
+                <input asp-for="textfind" class="form-control" />
+                <span asp-validation-for="textfind" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Find" class="btn btn-primary" />
+            </div>
+        </form>*@
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

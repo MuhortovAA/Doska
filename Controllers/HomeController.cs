@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Doska.Controllers
 {
@@ -79,5 +80,37 @@ namespace Doska.Controllers
 
             return View(result);
         }
+        public IActionResult FindAdses() => View();
+
+        [HttpPost]
+        public IActionResult FindAdses(string findtext)
+        {
+            if (ModelState.IsValid)
+            {
+                List<Ads> adses = repository.GetAdses(findtext);
+                TempData["message"] = $"Найдено {adses.Count()} объявлений.";
+                logger.LogInformation($"Выполнен поиск объявлений по слову:{findtext}, найдено:{adses.Count()}");
+                string dataAdses = Newtonsoft.Json.JsonConvert.SerializeObject(adses);
+                TempData["adses"] = dataAdses;
+                return RedirectToAction(nameof(ViewFindAdses));
+
+            }
+            else
+            {
+                logger.LogInformation($"Ошибка при поиске обьявленния по слову:{findtext}");
+                return View();
+            }
+
+        }
+        public IActionResult ViewFindAdses()
+        {
+            List<Ads> findAdses = new List<Ads>();
+            if (TempData["adses"] is string dataAdses)
+            {
+                findAdses = JsonConvert.DeserializeObject<List<Ads>>(dataAdses);
+            }
+            return View(findAdses);
+        }
+
     }
 }
