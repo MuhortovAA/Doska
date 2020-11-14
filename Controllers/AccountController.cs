@@ -45,7 +45,7 @@ namespace Doska.Controllers
                     if (result.Succeeded)
                     {
                         logger.LogInformation($"Login succeeded {user.Id}");
-
+                        TempData["UserId"] = user.Id;
                         string strUrl = loginModel?.ReturnUrl ?? "/";
                         return Redirect(strUrl);
 
@@ -53,6 +53,8 @@ namespace Doska.Controllers
                 }
             }
             ModelState.AddModelError("", "Неверное имя пользователя или пароль");
+            logger.LogInformation($"Неверное имя пользователя или пароль: {loginModel.Name}:{loginModel.Password}");
+
             return View(loginModel);
         }
         public async Task<RedirectResult> Logout(string returnUrl = "/")
@@ -80,7 +82,8 @@ namespace Doska.Controllers
                     logger.LogInformation($"Create Login succeeded {user.Id}");
 
                     return Redirect("/Home/Index/");
-                } else
+                }
+                else
                 {
                     foreach (IdentityError error in result.Errors)
                     {
