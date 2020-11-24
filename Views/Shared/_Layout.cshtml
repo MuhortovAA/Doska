@@ -42,7 +42,7 @@
                                     </li>
                                     <li>
                                         <a class="nav-link">Пользователь: @UserManager.GetUserName(User)</a>
-                                        <div>  @await Component.InvokeAsync("CustomerSummary") </div>
+                                        <a class="nav-link" asp-action="ViewCustomerAdses" asp-controller="Home">  @await Component.InvokeAsync("CustomerSummary") </a>
                                     </li>
                                 }
                                 else
