@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -20,15 +20,18 @@ namespace Doska.Controllers
         private UserManager<IdentityUser> userManager;
         private IvCatalogRepository repository;
         private IMapper mapper;
+        private SignInManager<IdentityUser> signInManager;
         private readonly ILogger logger;
 
-        public HomeController(IvCatalogRepository repo, IMapper _mapper, UserManager<IdentityUser> userMgr,
+        public HomeController(IvCatalogRepository repo, IMapper _mapper, UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr,
             ILogger<HomeController> _logger)
         {
             userManager = userMgr;
             repository = repo;
             mapper = _mapper;
             logger = _logger;
+            signInManager = signInMgr;
+
         }
         public IActionResult Index()
         {
