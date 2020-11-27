@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Doska.Models.ViewModels
@@ -9,25 +12,24 @@ namespace Doska.Models.ViewModels
     public class CustomerSummary : ViewComponent
     {
         IvCatalogRepository repository;
-        public CustomerSummary(IvCatalogRepository repo)
+        SignInManager<IdentityUser> signInManager;
+        UserManager<IdentityUser> userManager;
+        public CustomerSummary(IvCatalogRepository repo, SignInManager<IdentityUser> signInMgr, UserManager<IdentityUser> userMgr)
         {
             repository = repo;
+            signInManager = signInMgr;
+            userManager = userMgr;
+
+
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            if (TempData["UserId"] != null)
-            {
-                string id = TempData["UserId"].ToString();
-                //List<Ads> result = repository.GetCustomerAdses("3b4cf489-38a4-4999-9bbb-ef6a7ae7a439");
-                List<Ads> result = repository.GetCustomerAdses(id);
-                return View(new CustomerSummaryViewModel { CountAdses = result.Count() });
-            }
-            else
-            {
-                return View(new CustomerSummaryViewModel { CountAdses = 0 });
-            }
+
+            string id = userManager.GetUserId(signInManager.Context.User);
 
 
+            List<Ads> result = repository.GetCustomerAdses(id);
+            return View(new CustomerSummaryViewModel { CountAdses = result.Count() });
         }
     }
 }
