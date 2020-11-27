@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -46,7 +46,7 @@ namespace Doska.Controllers
                     if (result.Succeeded)
                     {
                         logger.LogInformation($"Login succeeded {user.Id}");
-                        TempData["UserId"] = user.Id;
+                        //TempData["UserId"] = user.Id;
                         string strUrl = loginModel?.ReturnUrl ?? "/";
                         return Redirect(strUrl);
 
