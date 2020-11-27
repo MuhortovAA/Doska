@@ -17,7 +17,7 @@
 </head>
 <body>
     <header>
-        <nav class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+               <nav class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <div class="row flex-grow-1">
                     <div class="col">
@@ -29,31 +29,18 @@
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="Home" asp-action="CreateAds">Подать обьявление</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link">Ваш язык: Русский</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link">Валюта: BYN</a>
-                                </li>
+
                                 @if (SignInManager.IsSignedIn(User))
                                 {
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-action="Logout" asp-controller="Account">Выход</a>
-                                    </li>
+                    <li class="nav-item"><a class="nav-link" asp-action="Logout" asp-controller="Account">Выход</a></li>
                                     <li>
                                         <a class="nav-link">Пользователь: @UserManager.GetUserName(User)</a>
                                         <a class="nav-link" asp-action="ViewCustomerAdses" asp-controller="Home">  @await Component.InvokeAsync("CustomerSummary") </a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-action="Create" asp-controller="Account">Регистрация</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-action="Login" asp-controller="Account">Вход</a>
-                                    </li>
-                                }
+                                    </li> }
+                                                else
+                                                {
+                                    <li class="nav-item"><a class="nav-link" asp-action="Create" asp-controller="Account">Регистрация</a></li>
+                                                    <li class="nav-item"><a class="nav-link" asp-action="Login" asp-controller="Account">Вход</a></li>}
 
                             </ul>
                         </div>
