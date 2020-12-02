@@ -1,59 +1,84 @@
-﻿@model IEnumerable<Doska.Models.Ads>
+@*@model IEnumerable<Doska.Models.Ads>*@
+@model AdsesListViewModel
 
-@{
-    ViewData["Title"] = "ViewSelectAds";
-}
+
+
+@{ ViewData["Title"] = "ViewSelectAds"; }
 
 <h1>ViewSelectAds</h1>
 
-<p>
-    <a asp-action="CreateAds">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCatalog)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCustomer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdsText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdsCreate)
-            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Adses.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCatalog)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCustomer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AdsText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AdsCreate)
+                </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCatalog)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCustomer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdsText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdsCreate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Adses)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdCatalog)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdCustomer)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AdsText)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AdsCreate)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>}
     </tbody>
 </table>
+
+
+<ul page-model="@Model.PagingInfo" page-controller="Home" page-action="ViewSelectAds" page-classes-enabled="true"
+    page-class-item="page-item" page-class-link="page-link" page-class-pagination="pagination"
+    page-class-normal="" page-class-selected="active" class="pagination">  </ul>
+
+
+@*<ul class="pagination">
+    <li class="page-item">
+        <a class="page-link" asp-controller="Home" asp-action="ViewSelectAds">Previous</a>
+    </li>
+
+    @for (int i = 1; i < 10; i++)
+    {
+<li class="page-item">
+    <a class="page-link" asp-controller="Home" asp-action="ViewSelectAds" asp-route-contentid="1" asp-route-pageid="@i">@i</a>
+</li>
+}
+    <li class="page-item">
+        <a class="page-link" asp-controller="Home" asp-action="ViewSelectAds">Next</a>
+    </li>
+
+</ul>*@
+<div>
+    <a asp-action="Index">Back to Home</a>
+</div>
