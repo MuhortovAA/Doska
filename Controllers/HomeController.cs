@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Doska.Models;
+using Doska.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -22,6 +23,8 @@ namespace Doska.Controllers
         private IMapper mapper;
         private SignInManager<IdentityUser> signInManager;
         private readonly ILogger logger;
+
+        public int PageSize = 3;
 
         public HomeController(IvCatalogRepository repo, IMapper _mapper, UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr,
             ILogger<HomeController> _logger)
@@ -86,10 +89,27 @@ namespace Doska.Controllers
         }
         public IActionResult ViewSelectAds(int id)
         {
-            List<Ads> result = repository.GetAdses(id);
+            List<Ads> result2 = repository.GetAdses(id);
+            List<Ads> result = repository.GetAdses(id).Skip((1 - 1) * PageSize).Take(PageSize).ToList();
+
 
             return View(result);
         }
+        [Route("[controller]/[action]/{contentid:int}/{pageid:int?}")]
+        public IActionResult ViewSelectAds(string contentid = "1", string pageid = "1")
+        {
+            int id = Convert.ToInt32(contentid ?? "1");
+            int PageNumber = Convert.ToInt32(pageid ?? "1");
+            int count = repository.GetCountAdses(id);
+            AdsesListViewModel result = new AdsesListViewModel
+            {
+                Adses = repository.GetAdses(id).OrderByDescending(a => a.AdsCreate).Skip((PageNumber - 1) * PageSize).Take(PageSize).ToList(),
+                PagingInfo = new PagingInfo { CurrentPage = PageNumber, ItemPerPage = PageSize, TotalItems = count }
+            };
+            return View(result);
+        }
+
+
         public IActionResult FindAdses() => View();
 
         [HttpPost]
