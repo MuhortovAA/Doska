@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Infrastructure\" />
     <Folder Include="Logs\" />
     <Folder Include="SQL\" />
   </ItemGroup>

@@ -45,5 +45,13 @@ namespace Doska.Models
 
             return result;
         }
+
+        public int GetCountAdses(int Id)
+        {
+            var IdCatalogParam = new SqlParameter("@IdCatalog", Id);
+            var result = context.Adses.FromSqlRaw("exec [dbo].[sp_SelectAdses] @IdCatalog", IdCatalogParam).ToList().Count();
+            return result;
+
+        }
     }
 }

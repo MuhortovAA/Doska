@@ -17,6 +17,7 @@ namespace Doska.Models
         List<Ads> GetCustomerAdses(string Id);
         List<Ads> GetAdses(int Id);
         List<Ads> GetAdses(string findtext);
+        int GetCountAdses(int Id);
 
     }
 }
