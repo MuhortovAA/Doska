@@ -24,7 +24,7 @@ namespace Doska.Controllers
         private SignInManager<IdentityUser> signInManager;
         private readonly ILogger logger;
 
-        public int PageSize = 3;
+        public int PageSize = 7;
 
         public HomeController(IvCatalogRepository repo, IMapper _mapper, UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr,
             ILogger<HomeController> _logger)
@@ -101,9 +101,14 @@ namespace Doska.Controllers
             int id = Convert.ToInt32(contentid ?? "1");
             int PageNumber = Convert.ToInt32(pageid ?? "1");
             int count = repository.GetCountAdses(id);
+            TempData["message"] = $"Найдено {count} объявлений.";
+            logger.LogInformation($"[{nameof(ViewSelectAds)}] Выполнен поиск по contentid: {contentid}, pageid: {pageid}, найдено: {count}");
+
             AdsesListViewModel result = new AdsesListViewModel
             {
-                Adses = repository.GetAdses(id).OrderByDescending(a => a.AdsCreate).Skip((PageNumber - 1) * PageSize).Take(PageSize).ToList(),
+                Catalog = repository.Catalogs.Where(c => c.id == id).First(),
+                //Adses = repository.GetAdses(id).OrderByDescending(a => a.AdsCreate).Skip((PageNumber - 1) * PageSize).Take(PageSize).ToList(),
+                Adses = repository.GetAdses2(id).OrderByDescending(a => a.AdsCreate).Skip((PageNumber - 1) * PageSize).Take(PageSize).ToList(),
                 PagingInfo = new PagingInfo { CurrentPage = PageNumber, ItemPerPage = PageSize, TotalItems = count }
             };
             return View(result);
@@ -117,30 +122,26 @@ namespace Doska.Controllers
         {
             if (ModelState.IsValid)
             {
-                List<Ads> adses = repository.GetAdses(findtext);
-                TempData["message"] = $"Найдено {adses.Count()} объявлений.";
-                logger.LogInformation($"Выполнен поиск объявлений по слову:{findtext}, найдено:{adses.Count()}");
-                string dataAdses = Newtonsoft.Json.JsonConvert.SerializeObject(adses);
-                TempData["adses"] = dataAdses;
-                return RedirectToAction(nameof(ViewFindAdses));
-
+                logger.LogInformation($"[{nameof(FindAdses)}] Выполнен RedirectToAction: {nameof(ViewFindAdses)} слово для поиска:{findtext}");
+                return RedirectToAction(nameof(ViewFindAdses), new { find = findtext });
             }
             else
             {
-                logger.LogInformation($"Ошибка при поиске обьявленния по слову:{findtext}");
+
+                string mes = $"Ошибка поиска по слову: {findtext}";
+                TempData["message"] = mes;
+                logger.LogInformation($"[{nameof(FindAdses)}] {mes}");
                 return View();
             }
 
         }
-        public IActionResult ViewFindAdses()
+        public IActionResult ViewFindAdses(string find)
         {
-            List<Ads> findAdses = new List<Ads>();
-            if (TempData["adses"] is string dataAdses)
-            {
-                findAdses = JsonConvert.DeserializeObject<List<Ads>>(dataAdses);
-            }
-            return View(findAdses);
-        }
 
+            List<AdsFind> adses = repository.GetAdses2(find);
+            TempData["message"] = $"Найдено {adses.Count()} объявлений.";
+            logger.LogInformation($"[{nameof(ViewFindAdses)}] Выполнен поиск по слову: {find}, найдено: {adses.Count()}");
+            return View(adses);
+        }
     }
 }
