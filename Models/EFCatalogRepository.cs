@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,7 +37,13 @@ namespace Doska.Models
 
             return result;
         }
+        public List<AdsSelect> GetAdses2(int Id)
+        {
+            var IdCatalogParam = new SqlParameter("@IdCatalog", Id);
+            var result = context.AdsesSel.FromSqlRaw("exec [dbo].[sp_SelectAdses2] @IdCatalog", IdCatalogParam).ToList();
 
+            return result;
+        }
         public List<Ads> GetAdses(string findtext)
         {
             var findtextParam = new SqlParameter("@find", findtext);
@@ -45,13 +51,22 @@ namespace Doska.Models
 
             return result;
         }
+        public List<AdsFind> GetAdses2(string findtext)
+        {
+            var findtextParam = new SqlParameter("@find", findtext);
+            var result = context.AdsesFind.FromSqlRaw("exec [dbo].[sp_FindAdses2] @find", findtextParam).ToList();
 
+            return result;
+        }
         public int GetCountAdses(int Id)
         {
             var IdCatalogParam = new SqlParameter("@IdCatalog", Id);
             var result = context.Adses.FromSqlRaw("exec [dbo].[sp_SelectAdses] @IdCatalog", IdCatalogParam).ToList().Count();
-            return result;
 
+            //var count = context.Adses.FromSqlRaw("exec [dbo].[sp_CountAdses] @IdCatalog", IdCatalogParam).ToList().Count();
+            //var result = Convert.ToInt32(count ?? "0");
+            //return result;
+            return result;
         }
     }
 }
