@@ -48,7 +48,7 @@ namespace Doska.Infrastructure
             taglip.AddCssClass(PageClassItem);
             TagBuilder tagap = new TagBuilder("a");
             tagap.AddCssClass(PageClassLink);
-            tagap.InnerHtml.Append("Previous");
+            tagap.InnerHtml.Append("<");
             taglip.InnerHtml.AppendHtml(tagap);
             result.InnerHtml.AppendHtml(taglip);
             //li
@@ -73,7 +73,7 @@ namespace Doska.Infrastructure
             taglin.AddCssClass(PageClassItem);
             TagBuilder tagan = new TagBuilder("a");
             tagan.AddCssClass(PageClassLink);
-            tagan.InnerHtml.Append("Next");
+            tagan.InnerHtml.Append(">");
             taglin.InnerHtml.AppendHtml(tagan);
             //
             result.InnerHtml.AppendHtml(taglin);
