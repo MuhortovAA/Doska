@@ -1,58 +1,49 @@
-﻿@model IEnumerable<Doska.Models.Ads>
+@model IEnumerable<AdsFind>
 
-@{
-    ViewData["Title"] = "ViewAds";
-}
+@{ ViewData["Title"] = "Найденные обьявления"; }
 
-<h1>ViewAds</h1>
+<div class="doska-form ml-5 mr-5">
 
-<p>
-    <a asp-action="CreateAds">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCatalog)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCustomer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdsText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdsCreate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <h2 class="text-center">Найдено</h2>
+    <table class="table table-striped table-hover table-sm table-bordered">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdCatalog)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdCustomer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AdsText)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AdsCreate)
-                </td>
-                <td>
+                <th>
 
-                </td>
+                </th>
+                <th>
+                    Раздел
+                </th>
+                <th>
+                    Дата
+                </th>
+                <th>
+                    Текст
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NameTitle)        @Html.DisplayFor(modelItem => item.NameSubtitle)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AdsCreate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AdsText)
+    </td>
+
+</tr>
+}
+        </tbody>
+    </table>
+    <div>
+        <a asp-controller="Home" asp-action="Index">На главную</a>
+    </div>
+</div>
