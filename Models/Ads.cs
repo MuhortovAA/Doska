@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +15,31 @@ namespace Doska.Models
 
 
     }
+    public class AdsSelect
+    {
+        public int Id { get; set; }
+        public string AdsText { get; set; } = "";
+        public DateTime AdsCreate { get; set; } = DateTime.Now;
+        public string NameSubtitle { get; set; }
+        public string NameTitle { get; set; }
+
+
+    }
+
+    public class AdsFind
+    {
+        public int Id { get; set; }
+        public string AdsText { get; set; } = "";
+        public DateTime AdsCreate { get; set; } = DateTime.Now;
+        public string NameSubtitle { get; set; }
+        public string NameTitle { get; set; }
+
+
+
+
+
+    }
+
     public class AdsModel
     {
         public int IdCatalog { get; set; }
@@ -38,5 +63,5 @@ namespace Doska.Models
 
         public string AdsText { get; set; }
     }
-    
+
 }
