@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +16,10 @@ namespace Doska.Models
         void CreateAds(Ads ads);
         List<Ads> GetCustomerAdses(string Id);
         List<Ads> GetAdses(int Id);
-        List<Ads> GetAdses(string findtext);
+        List<AdsSelect> GetAdses2(int Id);
         int GetCountAdses(int Id);
+        List<AdsFind> GetAdses2(string findtext);
+
 
     }
 }
