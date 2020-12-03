@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
@@ -18,6 +18,10 @@ namespace Doska.Models
         public DbSet<Title> Titles { get; set; }
         public DbSet<vCatalog> vCatalog { get; set; }
         public DbSet<Ads> Adses { get; set; }
+        public DbSet<AdsSelect> AdsesSel { get; set; }
+        public DbSet<AdsFind> AdsesFind { get; set; }
+
+
     }
 
 }
