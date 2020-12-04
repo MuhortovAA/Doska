@@ -29,7 +29,12 @@ namespace Doska.Models
             var result = context.Adses.FromSqlRaw("exec [dbo].[sp_CustomerAdses] @IdCustomer", IdCustomerParam).ToList();
             return result;
         }
-
+        public List<AdsCustomer> GetCustomerAdses2(string Id)
+        {
+            var IdCustomerParam = new SqlParameter("@IdCustomer", Id);
+            var result = context.AdsesCust.FromSqlRaw("exec [dbo].[sp_CustomerAdses2] @IdCustomer", IdCustomerParam).ToList();
+            return result;
+        }
         public List<Ads> GetAdses(int Id)
         {
             var IdCatalogParam = new SqlParameter("@IdCatalog", Id);
@@ -66,6 +71,13 @@ namespace Doska.Models
             //var count = context.Adses.FromSqlRaw("exec [dbo].[sp_CountAdses] @IdCatalog", IdCatalogParam).ToList().Count();
             //var result = Convert.ToInt32(count ?? "0");
             //return result;
+            return result;
+        }
+
+        public Ads GetAds(string id)
+        {
+            var IdParam = new SqlParameter("@Id", id);
+            var result = context.Adses.FromSqlRaw("exec [dbo].[sp_GetAds] @Id", IdParam).ToList().First();
             return result;
         }
     }
