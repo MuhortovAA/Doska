@@ -20,6 +20,8 @@ namespace Doska.Models
         public DbSet<Ads> Adses { get; set; }
         public DbSet<AdsSelect> AdsesSel { get; set; }
         public DbSet<AdsFind> AdsesFind { get; set; }
+        public DbSet<AdsCustomer> AdsesCust{ get; set; }
+
 
 
     }
