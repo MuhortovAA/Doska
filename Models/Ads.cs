@@ -25,7 +25,16 @@ namespace Doska.Models
 
 
     }
+    public class AdsCustomer
+    {
+        public int Id { get; set; }
+        public string AdsText { get; set; } = "";
+        public DateTime AdsCreate { get; set; } = DateTime.Now;
+        public string NameSubtitle { get; set; }
+        public string NameTitle { get; set; }
 
+
+    }
     public class AdsFind
     {
         public int Id { get; set; }
