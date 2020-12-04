@@ -84,7 +84,7 @@ namespace Doska.Controllers
         public IActionResult ViewCustomerAdses()
         {
             string id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            List<Ads> result = repository.GetCustomerAdses(id);
+            List<AdsCustomer> result = repository.GetCustomerAdses2(id);
             return View(result);
         }
         public IActionResult ViewSelectAds(int id)
