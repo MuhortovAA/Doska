@@ -22,7 +22,7 @@ namespace Doska.Models
         int GetCountAdses(int Id);
         List<AdsFind> GetAdses2(string findtext);
         Ads GetAds(string id);
-
+        void UpdateAds(Ads ads);
 
     }
 }

@@ -44,18 +44,19 @@ namespace Doska.Controllers
         [HttpPost]
         public IActionResult Edit(Ads ads)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    repository.CreateAds(ads);
-            //    TempData["message"] = $"Ads number:{ads.IdCatalog} has been created.";
-            //    logger.LogInformation($"Add ads's customer ID:{adsCreate.IdCustomer},  text: {adsCreate.AdsText}");
-            //    return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
-            //}
-            //else
-            //{
-            //    return View(adsCreate);
-            //}
-            return View();
+            if (ModelState.IsValid)
+            {
+                repository.UpdateAds(ads);
+                TempData["message"] = $"Обьявление обновлено";
+                logger.LogInformation($"Обьявление обновлено. id:{ads.Id}  text: {ads.AdsText}");
+                //return RedirectToAction("ViewCustomerAdses", "Home", new { id = ads.IdCustomer });
+                return RedirectToAction("ViewCustomerAdses", "Home");
+
+            }
+            else
+            {
+                return View();
+            }
         }
         [Authorize]
         [HttpGet]

@@ -80,5 +80,10 @@ namespace Doska.Models
             var result = context.Adses.FromSqlRaw("exec [dbo].[sp_GetAds] @Id", IdParam).ToList().First();
             return result;
         }
+        public void UpdateAds(Ads ads)
+        {
+            context.Adses.Update(ads);
+            context.SaveChanges();
+        }
     }
 }
