@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Doska.Controllers
 {
+    [Authorize]
     public class AdsController : Controller
     {
         private UserManager<IdentityUser> userManager;
@@ -29,18 +30,16 @@ namespace Doska.Controllers
 
 
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-        [Authorize]
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
         [HttpGet]
         public IActionResult Edit(string id)
         {
             var ads = repository.GetAds(id);
             return View(ads);
         }
-        [Authorize]
         [HttpPost]
         public IActionResult Edit(Ads ads)
         {
@@ -58,17 +57,31 @@ namespace Doska.Controllers
                 return View();
             }
         }
-        [Authorize]
         [HttpGet]
         public IActionResult Delete(string id)
         {
-            return View();
+            var ads = repository.GetAds(id);
+            return View(ads);
         }
-        [Authorize]
+        [HttpPost]
+        public IActionResult Delete(Ads ads)
+        {
+            repository.DeleteAds(ads);
+            TempData["message"] = $"Обьявление удалено";
+            logger.LogInformation($"Обьявление удалено. id:{ads.Id}  text: {ads.AdsText}");
+
+
+            return RedirectToAction("ViewCustomerAdses", "Home");
+
+        }
+
+
+
         [HttpGet]
         public IActionResult Details(string id)
         {
-            return View();
+            var ads = repository.GetAds(id);
+            return View(ads);
         }
     }
 }

@@ -83,7 +83,13 @@ namespace Doska.Models
         public void UpdateAds(Ads ads)
         {
             context.Adses.Update(ads);
+        }
+
+        public void DeleteAds(Ads ads)
+        {
+            context.Adses.Remove(ads);
             context.SaveChanges();
+
         }
     }
 }

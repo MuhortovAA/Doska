@@ -23,6 +23,8 @@ namespace Doska.Models
         List<AdsFind> GetAdses2(string findtext);
         Ads GetAds(string id);
         void UpdateAds(Ads ads);
+        void DeleteAds(Ads ads);
+
 
     }
 }
