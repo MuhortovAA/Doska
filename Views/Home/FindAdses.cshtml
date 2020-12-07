@@ -2,19 +2,25 @@
 @{ ViewData["Title"] = "Поиск"; }
 
 <div class="find-form doska-form">
-    <div class="card-body">
-        <h2 class="card-title text-center">Поиск</h2>
-        <form asp-controller="Home" asp-action="FindAdses">
-            <p>
-                Введите текст: <input class="form-control" type="text" name="findtext" placeholder="Введите текст" />
-                <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="Найти" />
-                </div>
-            </p>
-        </form>
-    </div>
+    <div class="card">
+        <div class="card-header">Поиск</div>
 
-    <div>
-        <a asp-controller="Home" asp-action="Index">На главную</a>
+        <div class="card-body">
+            <form asp-controller="Home" asp-action="FindAdses">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="findtext" placeholder="Введите текст" />
+                    <div class=" input-group-append">
+                        <button class="btn btn-primary" type="submit" value="Найти" data-toggle="tooltip" data-placement="top" title="Search">
+                            <i class="fa fa-search"></i> Поиск 
+                        </button>
+@*                        <input class="btn btn-primary" type="submit" value="Найти" data-toggle="tooltip" data-placement="top" title="Search" />*@
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <a asp-controller="Home" asp-action="Index">На главную</a>
+        </div>
     </div>
 </div>
