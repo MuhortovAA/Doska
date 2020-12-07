@@ -64,7 +64,9 @@ namespace Doska.Controllers
                 repository.CreateAds(ads);
                 TempData["message"] = $"Ads number:{ads.IdCatalog} has been created.";
                 logger.LogInformation($"Add ads's customer ID:{adsCreate.IdCustomer},  text: {adsCreate.AdsText}");
-                return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
+                //return RedirectToAction(nameof(ViewCustomerAds), new { id = ads.IdCustomer });
+                return RedirectToAction(nameof(ViewCustomerAdses));
+
             }
             else
             {
@@ -73,13 +75,13 @@ namespace Doska.Controllers
 
         }
 
-        [Authorize]
+        //[Authorize]
 
-        public IActionResult ViewCustomerAds(string id)
-        {
-            List<Ads> result = repository.GetCustomerAdses(id);
-            return View(result);
-        }
+        //public IActionResult ViewCustomerAds(string id)
+        //{
+        //    List<Ads> result = repository.GetCustomerAdses(id);
+        //    return View(result);
+        //}
         [Authorize]
         public IActionResult ViewCustomerAdses()
         {
@@ -95,6 +97,7 @@ namespace Doska.Controllers
 
             return View(result);
         }
+
         [Route("[controller]/[action]/{contentid:int}/{pageid:int?}")]
         public IActionResult ViewSelectAds(string contentid = "1", string pageid = "1")
         {
@@ -113,7 +116,11 @@ namespace Doska.Controllers
             };
             return View(result);
         }
-
+        public IActionResult DetailsAds(string id)
+        {
+            var ads = repository.GetAds(id);
+            return View(ads);
+        }
 
         public IActionResult FindAdses() => View();
 
@@ -135,10 +142,17 @@ namespace Doska.Controllers
             }
 
         }
+        public IActionResult DetailsFindAdses(string id, string find)
+        {
+            var ads = repository.GetAds(id);
+            ViewBag.Find = find;
+            return View(ads);
+        }
         public IActionResult ViewFindAdses(string find)
         {
 
             List<AdsFind> adses = repository.GetAdses2(find);
+            ViewBag.Find = find;
             TempData["message"] = $"Найдено {adses.Count()} объявлений.";
             logger.LogInformation($"[{nameof(ViewFindAdses)}] Выполнен поиск по слову: {find}, найдено: {adses.Count()}");
             return View(adses);
