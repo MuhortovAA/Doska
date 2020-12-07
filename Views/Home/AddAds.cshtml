@@ -2,43 +2,40 @@
 
 @{ ViewData["Title"] = "Подать обьявление"; }
 
-<div class="AddAds-form doska-form m-5">
-    <div class="card-body">
-        <h4 class="card-title text-center">Подать обьявление</h4>
-        <h4 class="card-title text-center">@Model.TitlePath</h4>
-
-        <form asp-action="AddAds" asp-controller="Home">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input asp-for="IdCustomer" type="hidden" class="form-control" />
-            <input asp-for="IdCatalog" type="hidden" class="form-control" />
-
-            @*<div class="form-group">
-                    <label asp-for="IdCustomer" class="control-label"></label>
-                    <input asp-for="IdCustomer" class="form-control" />
-                    <span asp-validation-for="IdCustomer" class="text-danger"></span>
-                </div>*@
-
-            @*<div class="form-group">
-                    <label asp-for="IdCatalog" class="control-label"></label>
-                    <input asp-for="IdCatalog" class="form-control" />
-                    <span asp-validation-for="IdCatalog" class="text-danger"></span>
-                </div>*@
-            @*<div class="form-group">
-                    <label asp-for="TitlePath" class="control-label"></label>
-                    <input asp-for="TitlePath" class="form-control" />
-                    <span asp-validation-for="TitlePath" class="text-danger"></span>
-                </div>*@
-            <div class="form-group">
-                <label asp-for="AdsText" class="control-label">Текст:</label>
-                <textarea asp-for="AdsText" class="form-control"></textarea>
-                <span asp-validation-for="AdsText" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Создать" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="create-form doska-form">
+    <form asp-action="AddAds" asp-controller="Home">
+        <div class="card">
+            <div class="card-header">Подать обьявление</div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@Model.TitlePath</li>
+                </ul>
+                @*<h4 class="card-subtitle mb-2 text-muted">@Model.TitlePath</h4>*@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="IdCustomer" type="hidden" class="form-control" />
+                <input asp-for="IdCatalog" type="hidden" class="form-control" />
+                <div class="form-group">
+                    <label asp-for="AdsText" class="control-label">Текст:</label>
+                    <textarea asp-for="AdsText" class="form-control"></textarea>
+                    <span asp-validation-for="AdsText" class="text-danger"></span>
+                </div>
+                <div class="float-right">
+                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="top" title="Create">
+                        <i class="fa fa-save"></i> Создать
+                    </button>
+                    <a class="btn btn-secondary" href="@Url.Action("Index", "Home")" data-toggle="tooltip" data-placement="top" title="Cancel"><i class="fa fa-close"></i> Отмена</a>
+                </div>
+                <br />
+                <div>
+                    <a asp-action="CreateAds" asp-controller="Home">Назад</a>
+                </div>
+                @*<div class="form-group">
+            <input type="submit" value="Создать" class="btn btn-primary" />
+        </div>
         <div>
             <a asp-controller="Home" asp-action="Index">На главную</a>
+        </div>*@
+            </div>
         </div>
-    </div>
+    </form>
 </div>
