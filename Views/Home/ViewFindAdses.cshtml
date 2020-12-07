@@ -2,48 +2,53 @@
 
 @{ ViewData["Title"] = "Найденные обьявления"; }
 
-<div class="doska-form ml-5 mr-5">
+<div class="listfindadses-form doska-form">
+    <div class="card">
+        <div class="card-header">Найдено</div>
+        <div class="card-body">
+            <div>
+                <a asp-controller="Home" asp-action="Index">На главную</a>
+            </div>
+            <table class="table table-striped table-hover table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            Раздел
+                        </th>
+                        <th>
+                            Дата
+                        </th>
+                        <th>
+                            Текст
+                        </th>
+                        <th>
+                            Действия
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
 
-    <h2 class="text-center">Найдено</h2>
-    <table class="table table-striped table-hover table-sm table-bordered">
-        <thead>
-            <tr>
-                <th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameTitle)        @Html.DisplayFor(modelItem => item.NameSubtitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdsCreate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdsText)
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-outline-info" href="@Url.Action("DetailsFindAdses", "Home", new { id=item.Id, find=@ViewBag.Find })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-info"></i> </a>
+                            </div>
+                        </td>
 
-                </th>
-                <th>
-                    Раздел
-                </th>
-                <th>
-                    Дата
-                </th>
-                <th>
-                    Текст
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NameTitle)        @Html.DisplayFor(modelItem => item.NameSubtitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AdsCreate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AdsText)
-    </td>
-
-</tr>
-}
-        </tbody>
-    </table>
-    <div>
-        <a asp-controller="Home" asp-action="Index">На главную</a>
+                    </tr>}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
