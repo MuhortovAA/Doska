@@ -1,61 +1,64 @@
-@model IEnumerable<Doska.Models.Ads>
+@model IEnumerable<Doska.Models.AdsCustomer>
 
-@{ ViewData["Title"] = "Созданные обьявления"; }
-
-
-<div class="doska-form m-5">
+@{ ViewData["Title"] = "Мои объявления"; }
 
 
-    <table class="table table-striped table-hover table-sm table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdCatalog)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdCustomer)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AdsText)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AdsCreate)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IdCatalog)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IdCustomer)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AdsText)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AdsCreate)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-    </td>
-</tr>
-}
-        </tbody>
-    </table>
-    <div>
-        <a asp-controller="Home" asp-action="Index">На главную</a>
+<div class="listcustomeradses-form doska-form">
+    <div class="card">
+        <div class="card-header">Мои объявления</div>
+        <div class="card-body">
+
+            <div>
+                <a asp-controller="Home" asp-action="Index">На главную</a>
+            </div>
+            <table class="table table-striped table-hover table-sm table-bordered">
+
+                <thead>
+                    <tr>
+
+                        <th>
+                            Дата
+                        </th>
+                        <th>
+                            Рубрика
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                            Текст
+                        </th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.AdsCreate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameSubtitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdsText)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-outline-primary" href="@Url.Action("Edit", "Ads", new { id=item.Id })" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> </a>
+                    <a class="btn btn-outline-info" href="@Url.Action("Details", "Ads", new { id=item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-info"></i> </a>
+                    <a class="btn btn-outline-danger" href="@Url.Action("Delete", "Ads", new { id=item.Id })" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i> </a>
+                </div>
+            </td>
+        </tr>}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
