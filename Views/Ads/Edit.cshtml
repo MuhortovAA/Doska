@@ -1,31 +1,32 @@
-﻿@model Doska.Models.Ads
-@{
-    ViewData["Title"] = "Редактировать";
-}
-<div class="edit-form doska-form m-5">
-    <div class="card-body">
-        <form asp-action="Edit">
-            <h2 class="text-center">Редактировать</h2>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="IdCustomer" />
-            <input type="hidden" asp-for="IdCatalog" />
-            <div class="form-group">
-                <label asp-for="AdsText" class="control-label">Текст:</label>
-                <textarea asp-for="AdsText" class="form-control"></textarea>
-                <span asp-validation-for="AdsText" class="text-danger"></span>
+@model Doska.Models.Ads
+@{ ViewData["Title"] = "Редактировать"; }
+<div class="edit-form doska-form">
+    <form asp-action="Edit">
+        <div class="card">
+            <div class="card-header">Редактировать</div>
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="IdCustomer" />
+                <input type="hidden" asp-for="IdCatalog" />
+                <div class="form-group">
+                    <label asp-for="AdsText" class="control-label">Текст:</label>
+                    <textarea asp-for="AdsText" class="form-control" rows="10"></textarea>
+                    <span asp-validation-for="AdsText" class="text-danger"></span>
+                </div>
+                <div class="float-right">
+                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="top" title="Save">
+                        <i class="fa fa-save"></i> Сохранить
+                    </button>
+                    <a class="btn btn-secondary" href="@Url.Action("ViewCustomerAdses", "Home")" data-toggle="tooltip" data-placement="top" title="Cancel"><i class="fa fa-close"></i> Отмена</a>
+                </div>
+                <br />
+                <div>
+                    <a asp-action="ViewCustomerAdses" asp-controller="Home">Назад</a>
+                </div>
             </div>
-            <div class="form-group">
-                <button class="btn btn-primary">
-                    <i class="fa fa-save"></i> Save
-                </button>
-            </div>
-        </form>
-        <div>
-            <a asp-action="ViewCustomerAdses" asp-controller="Home">Назад</a>
         </div>
-    </div>
+    </form>
 
 </div>
-
 
