@@ -1,37 +1,37 @@
 @model IEnumerable<vCatalog>
 
-    @{ ViewData["Title"] = "Подать обьявление"; }
+@{ ViewData["Title"] = "Подать обьявление"; }
 
-    <div class="doska-form m-5">
-        <h4 class="text-center">Подать обьявление</h4>
-
-
-        <div id="accordion">
-            @foreach (var c in Model.GroupBy(x => new { x.TitleId, x.NameTitle }, (key, group) => new { key1 = key.TitleId, key2 = key.NameTitle, result = group.ToList() }))
-            {
-<div class="card">
-    <div class="card-header" id="heading@(c.key1)">
-        <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse@(c.key1)" aria-expanded="true" aria-controls="collapse@(c.key1)">
-                @c.key2
-            </button>
-        </h5>
-    </div>
-
-    <div id="collapse@(c.key1)" class="collapse" aria-labelledby="heading@(c.key1)" data-parent="#accordion">
+<div class="catalog-form doska-form">
+    <div class="card">
+        <div class="card-header">Подать обьявление</div>
+        <div>
+            <a asp-controller="Home" asp-action="Index">На главную</a>
+        </div>
         <div class="card-body">
-            @foreach (var g in c.result)
-            {
+            <div id="accordion">
+                @foreach (var c in Model.GroupBy(x => new { x.TitleId, x.NameTitle }, (key, group) => new { key1 = key.TitleId, key2 = key.NameTitle, result = group.ToList() }))
+                {
+    <div class="card">
+        <div class="card-header" id="heading@(c.key1)">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse@(c.key1)" aria-expanded="true" aria-controls="collapse@(c.key1)">
+                    @c.key2
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapse@(c.key1)" class="collapse" aria-labelledby="heading@(c.key1)" data-parent="#accordion">
+            <div class="card-body">
+                @foreach (var g in c.result)
+                {
 <div class="list-group">
     <a class="list-group-item list-group-item-action" asp-action="AddAds" asp-controller="Home" asp-route-id="@g.id">@g.NameSubtitle</a>
 </div>}
+            </div>
         </div>
-    </div>
-</div>}
-        </div>
-
-        <div>
-            <a asp-controller="Home" asp-action="Index">На главную</a>
+    </div>}
+            </div>
         </div>
     </div>
 
@@ -44,3 +44,5 @@
                 <a href="#" class="list-group-item list-group-item-action">@groups.Key</a>
             }
         </div>*@
+
+</div>
