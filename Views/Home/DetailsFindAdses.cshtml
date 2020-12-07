@@ -1,0 +1,29 @@
+﻿@model Doska.Models.Ads
+@{ ViewData["Title"] = "Подробности"; }
+<div class="details-form doska-form">
+    <div class="card">
+        <div class="card-header">Подробности</div>
+        <div class="card-body">
+
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+
+                @Html.DisplayNameFor(model => model.AdsText)
+                @Html.DisplayFor(model => model.AdsText)
+            </div>
+            <form method="post">
+
+                <div class="float-right">
+                    @*                    <a class="btn btn-secondary" href="@Url.Action("FindAdses", "Home", new {find=@ViewBag.Find })" data-toggle="tooltip" data-placement="top" title="Cancel"><i class="fa fa-close"></i> Отмена</a>*@
+                    <a class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Cancel"><i class="fa fa-close"></i> Отмена</a>
+
+                </div>
+            </form>
+            <br />
+
+            <div>
+                <a asp-action="Index" asp-controller="Home">На главную</a>
+            </div>
+        </div>
+    </div>
+</div>
