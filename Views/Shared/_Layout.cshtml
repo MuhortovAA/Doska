@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @using Doska.Models
 @*@using System.Linq;*@
 @*@using System.Security.Claims;*@
@@ -18,7 +18,7 @@
 </head>
 <body>
     <header>
-               <nav class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <div class="row flex-grow-1">
                     <div class="col">
@@ -35,13 +35,15 @@
                                 {
                     <li class="nav-item"><a class="nav-link" asp-action="Logout" asp-controller="Account">Выход</a></li>
                                     <li>
-                                        <a class="nav-link">Пользователь: @UserManager.GetUserName(User)</a>
+                                        <a class="nav-link" asp-action="Details" asp-controller="Account" >Пользователь: @UserManager.GetUserName(User)</a>
                                         <a class="nav-link" asp-action="ViewCustomerAdses" asp-controller="Home">  @await Component.InvokeAsync("CustomerSummary") </a>
-                                    </li> }
-                                                else
-                                                {
-                                    <li class="nav-item"><a class="nav-link" asp-action="Create" asp-controller="Account">Регистрация</a></li>
-                                                    <li class="nav-item"><a class="nav-link" asp-action="Login" asp-controller="Account">Вход</a></li>}
+                                    </li>
+ }
+                                else
+                                {
+                    <li class="nav-item"><a class="nav-link" asp-action="Create" asp-controller="Account">Регистрация</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-action="Login" asp-controller="Account">Вход</a></li>
+}
 
                             </ul>
                         </div>
@@ -53,14 +55,15 @@
 
         </nav>
     </header>
-    <div class="bg-light">
+    <div class="bg-white">
         @if (TempData["message"] != null)
         {<div class="alert-success">@TempData["message"]</div>}
         @RenderBody()
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
