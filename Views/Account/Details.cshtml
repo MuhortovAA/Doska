@@ -1,0 +1,28 @@
+﻿@model Doska.Models.ViewModels.ViewModel
+
+@{
+    ViewData["Title"] = "Подробности";
+}
+<div class="details-form doska-form">
+    <div class="card">
+        <div class="card-header">Подробности</div>
+        <div class="card-body">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                @Html.DisplayNameFor(model => model.UserName)
+                @Html.DisplayFor(model => model.UserName)
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayFor(model => model.Email)
+            </div> <div class="form-group">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+                @Html.DisplayFor(model => model.PhoneNumber)
+                <div class="float-right">
+                    <a class="btn btn-primary" asp-action="Edit" asp-controller="Account" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit"></i> Редактировать</a>
+                    <a class="btn btn-secondary" href="@Url.Action("Index", "Home")" data-toggle="tooltip" data-placement="top" title="Cancel"><i class="fa fa-close"></i> Отмена</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
