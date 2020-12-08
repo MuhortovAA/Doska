@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 using Doska.Models;
 using Doska.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -18,13 +19,15 @@ namespace Doska.Controllers
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
         private readonly ILogger logger;
+        private IMapper mapper;
 
-        public AccountController(UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr,
-            ILogger<AccountController> _logger)
+        public AccountController(UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr, IMapper _mapper, ILogger<AccountController> _logger)
         {
             userManager = userMgr;
             signInManager = signInMgr;
             logger = _logger;
+            mapper = _mapper;
+
         }
         [AllowAnonymous]
         public IActionResult Login(string returnUrl)
@@ -75,7 +78,7 @@ namespace Doska.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = new IdentityUser { UserName = model.Name, Email = model.Email };
+                IdentityUser user = new IdentityUser { UserName = model.Name, Email = model.Email, PhoneNumber = model.PhoneNumber };
                 IdentityResult result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -96,8 +99,46 @@ namespace Doska.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> Details()
+        {
+            string id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await userManager.FindByIdAsync(id);
+            ViewModel userview = mapper.Map<ViewModel>(user);
+            logger.LogInformation($"View detailes profile user: {user.Id}");
 
+            return View(userview);
+        }
+        public async Task<IActionResult> Edit()
+        {
 
+            string id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await userManager.FindByIdAsync(id);
+            EditModel userview = mapper.Map<EditModel>(user);
+            logger.LogInformation($"Edit profile user: {user.Id}");
 
+            return View(userview);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditModel useredit)
+        {
+
+            if (ModelState.IsValid)
+            {
+                string id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var user = await userManager.FindByIdAsync(id);
+                user.PhoneNumber = useredit.PhoneNumber;
+                user.Email = useredit.Email;
+
+                IdentityResult result = await userManager.UpdateAsync(user);
+                TempData["message"] = $"Данные пользователя обновлены";
+                logger.LogInformation($"User id:{useredit.Id} update profile");
+                return RedirectToAction("Details", "Account");
+
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
