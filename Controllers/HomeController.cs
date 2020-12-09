@@ -122,7 +122,9 @@ namespace Doska.Controllers
             return View(ads);
         }
 
-        public IActionResult FindAdses() => View();
+        //public IActionResult FindAdses() => View();
+        public IActionResult FindAdses() => View(new Find { Text = "" });
+
 
         [HttpPost]
         public IActionResult FindAdses(string findtext)
@@ -153,7 +155,9 @@ namespace Doska.Controllers
 
             List<AdsFind> adses = repository.GetAdses2(find);
             ViewBag.Find = find;
-            TempData["message"] = $"Найдено {adses.Count()} объявлений.";
+            TempData["message"] = $"Поиск по слову: {find} найдено {adses.Count()} объявлений.";
+
+            //TempData["message"] = $"Найдено {adses.Count()} объявлений.";
             logger.LogInformation($"[{nameof(ViewFindAdses)}] Выполнен поиск по слову: {find}, найдено: {adses.Count()}");
             return View(adses);
         }
