@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -73,4 +74,10 @@ namespace Doska.Models
         public string AdsText { get; set; }
     }
 
+    public class Find
+    {
+        [Required(ErrorMessage = "Введите текст для поиска")]
+        [StringLength(20, ErrorMessage ="Минимальная длина текста 3 символа максимальна 20", MinimumLength = 3)]
+        public string Text { get; set; }
+    }
 }
