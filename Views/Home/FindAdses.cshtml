@@ -1,4 +1,6 @@
-@model string
+@model Find
+@*@model string*@
+
 @{ ViewData["Title"] = "Поиск"; }
 
 <div class="find-form doska-form">
@@ -7,13 +9,14 @@
 
         <div class="card-body">
             <form asp-controller="Home" asp-action="FindAdses">
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="input-group">
-                    <input class="form-control" type="text" name="findtext" placeholder="Введите текст" />
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                    <input asp-for="Text" class="form-control" type="text" name="findtext" placeholder="Введите текст" />
                     <div class=" input-group-append">
                         <button class="btn btn-primary" type="submit" value="Найти" data-toggle="tooltip" data-placement="top" title="Search">
-                            <i class="fa fa-search"></i> Поиск 
+                            <i class="fa fa-search"></i> Поиск
                         </button>
-@*                        <input class="btn btn-primary" type="submit" value="Найти" data-toggle="tooltip" data-placement="top" title="Search" />*@
                     </div>
                 </div>
             </form>
