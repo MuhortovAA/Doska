@@ -26,7 +26,10 @@ namespace Doska.Controllers
 
         public int PageSize = 7;
 
-        public HomeController(IvCatalogRepository repo, IMapper _mapper, UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signInMgr,
+        public HomeController(IvCatalogRepository repo,
+            IMapper _mapper,
+            UserManager<IdentityUser> userMgr,
+            SignInManager<IdentityUser> signInMgr,
             ILogger<HomeController> _logger)
         {
             userManager = userMgr;

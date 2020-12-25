@@ -60,7 +60,7 @@ namespace Doska
             });
             //SeedData.EnsurePopulated(app);
             //IdentitySeedData.EnsurePopulated(app);
-            loggerFactory.AddFile("Logs/{Date}.log");
+            //loggerFactory.AddFile("Logs/{Date}.log");
         }
     }
 }
